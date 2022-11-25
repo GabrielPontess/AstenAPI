@@ -4,7 +4,7 @@
     {
         private string _urlCarimboTempo = "https://plataforma.astenassinatura.com.br/";
 
-        public bool DocumentoComXMLs { get; set; } = false;
+        public string DocumentoComXMLs { get; set; } = "N";
         public string UrlCarimboTempo
         {
             set

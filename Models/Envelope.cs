@@ -4,22 +4,22 @@
     {
         public long Id { get; set; }
         public string Descricao { get; set; }
-        public Repositorio Repositorio { get; set; }
+        public Repositorio Repositorio { get; set; } = new Repositorio();
         public string? Mensagem { get; set; }
         public string? MensagemObservadores { get; set; }
         public DateTime? DataExpiracao { get; set; }
         public DateTime? HoraExpiracao { get; set; }
-        public bool UsarOrdem { get; set; } = true; 
-        public ConfigAuxiliar ConfigAuxiliar { get; set; }
-        public List<Documento> Documentos { get; set; }
-        public List<SignatarioEnvelope> SignatariosEnvelope { get; set; }
-        public List<Observador> Observadores { get; set; }
-        public List<Tag> Tags { get; set; }
-        public List<InfoAdicional> InfoAdicionais { get; set; }
-        public bool IncluirHashTodasPaginas { get; set; } = true;
-        public bool PermitirDespachos { get; set; } = true;
-        public bool IgnorarNotificacoes { get; set; } = false;
-        public bool IgnorarNotificacoesPendentes { get; set; } = false;
+        public string UsarOrdem { get; set; } = "S"; 
+        public ConfigAuxiliar ConfigAuxiliar { get; set; } = new ConfigAuxiliar();
+        public List<Documento> Documentos { get; set; } = new List<Documento>();
+        public List<SignatarioEnvelope> SignatariosEnvelope { get; set; } = new List<SignatarioEnvelope>(); 
+        public List<Observador> Observadores { get; set; } = new List<Observador>();
+        public List<Tag> Tags { get; set; } = new List<Tag>();
+        public List<InfoAdicional> InfoAdicionais { get; set; } = new List<InfoAdicional>();
+        public string IncluirHashTodasPaginas { get; set; } = "S";
+        public string PermitirDespachos { get; set; } = "S";
+        public string IgnorarNotificacoes { get; set; } = "N";
+        public string IgnorarNotificacoesPendentes { get; set; } = "N";
         public double? QrCodePosLeft { get; set; }
         public double? QrCodePosTop { get; set; }
         public DateTime? DataIniContrato { get; set; }

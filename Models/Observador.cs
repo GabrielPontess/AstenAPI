@@ -2,7 +2,7 @@
 {
     public class Observador
     {
-        public Envelope Id { get; set; }
+        public Envelope Id { get; set; } = new Envelope();
         public string EmailObservador { get; set; }
     }
 }

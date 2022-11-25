@@ -33,3 +33,4 @@ D:\AstenAssinaturaAPI\AstenAssinaturaAPI\bin\Debug\net6.0\Microsoft.EntityFramew
 D:\AstenAssinaturaAPI\AstenAssinaturaAPI\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
 D:\AstenAssinaturaAPI\AstenAssinaturaAPI\bin\Debug\net6.0\MySqlConnector.dll
 D:\AstenAssinaturaAPI\AstenAssinaturaAPI\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
+D:\AstenAssinaturaAPI\AstenAssinaturaAPI\bin\Debug\net6.0\Newtonsoft.Json.dll

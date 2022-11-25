@@ -5,6 +5,6 @@
         public long Id { get; set; }
         public string? NomeArquivo { get; set; }
         public string? ConteudoXML { get; set; } 
-        public List<XMLSignatario>? XMLSignatarios { get; set; }
+        public List<XMLSignatario>? XMLSignatarios { get; set; } = new List<XMLSignatario>();
     }
 }

@@ -6,6 +6,6 @@
         public string NomeDocumento { get; set; }
         public string MimeType { get; set; }
         public string Conteudo { get; set; }
-        public List<XMLAuxiliar> XMLAuxiliar { get; set; }
+        public List<XMLAuxiliar> XMLAuxiliar { get; set; } = new List<XMLAuxiliar>();
     }
 }

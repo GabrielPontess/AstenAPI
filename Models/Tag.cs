@@ -3,6 +3,6 @@
     public class Tag
     {
         public string Descricao { get; set; }
-        public Envelope Id { get; set; }  
+        public Envelope Id { get; set; } = new Envelope();  
     }
 }
