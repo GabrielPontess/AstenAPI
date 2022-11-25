@@ -2,9 +2,8 @@
 {
     public class XMLAuxiliar
     {
-        public long Id { get; set; }
-        public string? NomeArquivo { get; set; }
-        public string? ConteudoXML { get; set; } 
-        public List<XMLSignatario>? XMLSignatarios { get; set; } = new List<XMLSignatario>();
+        public string? nomeArquivo { get; set; }
+        public string? conteudoXML { get; set; } 
+        public List<XMLSignatario>? listaXMLSignatario { get; set; } = new List<XMLSignatario>();
     }
 }

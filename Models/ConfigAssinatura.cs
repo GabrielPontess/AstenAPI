@@ -2,22 +2,20 @@
 {
     public class ConfigAssinatura
     {
-        public string EmailSignatario { get; set; }
-        public string NomeSignatario { get; set; }
-        public string CelularSignatario { get; set; }
-        public int TipoAssinatura { get; set; }
-        public  bool PermitirDelegar { get; set; }
-        public bool ApenasCelular { get; set; }
-        public bool ExigirLogin { get; set; }
-        public bool ExigirCodigo { get; set; }  
-        public bool ExigirDadosIdentif { get; set; }
-        public bool AssinaturaPresencial { get; set; }
-        public string? NomeSignPresencial { get; set; }
-        public string? CpfSignPresencial { get; set; }
-        public bool IgnorarRecusa { get; set; }
-        public int CodigoExigido { get; set; }
-        public bool IncluirImagensAutentEnvelope { get; set; }
-        public bool AnalisarFaceImagem { get; set; }
-        public int PercenturalPrecisaoFace { get; set; }
+        public string? emailSignatario { get; set; }
+        public string? nomeSignatario { get; set; }
+        public string tipoAssinatura { get; set; } = "1";
+        public string permitirDelegar { get; set; } = "N";
+        public string apenasCelular { get; set; } = "N";
+        public string exigirLogin { get; set; } = "N";
+        public string exigirCodigo { get; set; } = "N";
+        public string exigirDadosIdentif { get; set; } = "N";
+        public string assinaturaPresencial { get; set; } = "N";
+        public string? nomeSignPresencial { get; set; }
+        public string? cpfSignPresencial { get; set; }
+        public int? codigoExigido { get; set; }
+        public string incluirImagensAutentEnvelope { get; set; } = "N";
+        public string analisarFaceImagem { get; set; } = "N"; 
+        public int percentualPrecisaoFace { get; set; } = 0;
     }
 }

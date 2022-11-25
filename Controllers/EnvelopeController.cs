@@ -7,6 +7,7 @@ using System.Text.Json.Serialization;
 using System.Text.Unicode;
 using System.Text;
 using System.Reflection.Metadata;
+using Newtonsoft.Json.Linq;
 
 namespace AstenAssinaturaAPI.Controllers
 {
@@ -23,39 +24,41 @@ namespace AstenAssinaturaAPI.Controllers
             {
                 using (var client = new HttpClient())
                 {
-                    var inserirEnvelope = new InserirEnvelope()
+                var inserirEnvelope = new InserirEnvelope()
+                {
+                    Params = new Params()
                     {
-                        Token = "GYtZ6+1SZRx5QypP2huHk2OOJfr1FyeQ79p1tt3JCiIoH93GbnkwxF6S60yFQoZwYCzUwZVb-Lk9KvOx1EDnve3c9kCXhw84MFRT-Zj7IojmKvbK7pyRIsKdVqJAEyE5Lr4sMM5c0mzbUt0ZrLpsF1vZ9rPNAn-5-4rlgk2N-8RZjs8R5BbKuU",
-                        Params = new Params()
+                        Envelope = new Envelope()
                         {
-                            Envelope = new Envelope()
-                            {
-                                Descricao = "Nova Descricao",
-                            }
-                        },
-                    };
+                            descricao = "Nova Descricao",
+                        }
+                    },
+                };
 
-                    var Signatario = new SignatarioEnvelope()
+
+                var Documento = new Documento();
+
+                var Signatario = new SignatarioEnvelope()
+                {
+                    ConfigAssinatura = new ConfigAssinatura()
                     {
-                        ConfigAssinatura = new ConfigAssinatura()
-                        {
-                            EmailSignatario = "arthurvasconcelosdelunafreire@gmail.com",
-                        },
-                    };
+                        emailSignatario = "arthurvasconcelosdelunafreire@gmail.com",
+                    },
+                };
 
 
-                    var SignatarioTecnico = new SignatarioEnvelope()
+                var SignatarioTecnico = new SignatarioEnvelope()
+                {
+                    ConfigAssinatura = new ConfigAssinatura()
                     {
-                        ConfigAssinatura = new ConfigAssinatura()
-                        {
-                            EmailSignatario = "prova.tecnica@avmb.com.br",
-                        },
-                    };
+                        emailSignatario = "prova.tecnica@avmb.com.br",
+                    },
+                };
 
-                    inserirEnvelope.Params.Envelope.SignatariosEnvelope.Add(Signatario);
-                    inserirEnvelope.Params.Envelope.SignatariosEnvelope.Add(SignatarioTecnico);
+                inserirEnvelope.Params.Envelope.listaSignatariosEnvelope.Add(Signatario);
+                inserirEnvelope.Params.Envelope.listaSignatariosEnvelope.Add(SignatarioTecnico);
 
-                    var jsonobjeto = JsonConvert.SerializeObject(inserirEnvelope);
+                    var jsonobjeto = JsonConvert.SerializeObject(inserirEnvelope).Replace("Params","params") ;
                     var content = new StringContent(jsonobjeto, Encoding.UTF8, "application/json");
 
                     var response = client.PostAsync(Connection, content);
@@ -67,7 +70,7 @@ namespace AstenAssinaturaAPI.Controllers
 
                         var envelopeCriado = JsonConvert.DeserializeObject<Envelope>(result.Result);
 
-                        return Ok(envelopeCriado);
+                        return Ok(response.Result);
                     }
 
                     return NotFound();

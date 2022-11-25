@@ -2,6 +2,6 @@
 {
     public class Repositorio
     {
-        public long Id { get; set; } = 40;
+        public long id { get; set; } = 40;
     }
 }
