@@ -1,5 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
+using SQLite;
+using SQLitePCL;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AstenAssinaturaAPI.Models;
@@ -8,6 +10,8 @@ using System.Text.Unicode;
 using System.Text;
 using System.Reflection.Metadata;
 using Newtonsoft.Json.Linq;
+using Microsoft.AspNetCore.SignalR.Protocol;
+using System.Security.Cryptography.X509Certificates;
 
 namespace AstenAssinaturaAPI.Controllers
 {
@@ -164,13 +168,20 @@ namespace AstenAssinaturaAPI.Controllers
                     if (response.Result.IsSuccessStatusCode)
                     {
                         var result = response.Result.Content.ReadAsStringAsync();
-                        var data = (JObject)JsonConvert.DeserializeObject(result.Result);
+                        var envelope = JsonConvert.DeserializeObject<EnvelopePersist>(result.Result);
+                        envelope.status = 4;
 
-                        var status = data.SelectToken("response.status").Value<int>();
-
-                        if(status == 4)
+                        if(envelope.status == 4)
                         {
+                            string databaseName = "DataBase.db";
+                            string folderpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                            string databasePath = System.IO.Path.Combine(folderpath, databaseName);
 
+                           SQLiteConnection connection = new SQLiteConnection(databasePath);
+                           connection.CreateTable<EnvelopePersist>();
+                           connection.Insert(envelope);
+                           connection.Close();
+                           
                         }
 
                         return Ok(result.Result);

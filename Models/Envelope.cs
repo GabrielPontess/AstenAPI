@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SQLite;
 
 namespace AstenAssinaturaAPI.Models
 {
@@ -31,8 +32,36 @@ namespace AstenAssinaturaAPI.Models
         public decimal? valorContrato { get; set; }
         public string? descricaoContratante { get; set; }
         public string? descricaoContratado { get; set; }
+        public int? status { get; set; }
     }
 
+    public class EnvelopePersist
+    {
+        [PrimaryKey]
+        [AutoIncrement]
+        public long Id { get; set; }
+        public string? descricao { get; set; }
+        public string? mensagem { get; set; }
+        public string? mensagemObservadores { get; set; }
+        public string? mensagemNotificacaoSMS { get; set; }
+        public DateTime? dataExpiracao { get; set; }
+        public DateTime? horaExpiracao { get; set; }
+        public string usarOrdem { get; set; } = "S";
+        public string incluirHashTodasPaginas { get; set; } = "S";
+        public string permitirDespachos { get; set; } = "S";
+        public string ignorarNotificacoes { get; set; } = "N";
+        public string ignorarNotificacoesPendentes { get; set; } = "N";
+        public double? qrCodePosLeft { get; set; }
+        public double? qrCodePosTop { get; set; }
+        public DateTime? dataIniContrato { get; set; }
+        public DateTime? dataFimContrato { get; set; }
+        public string? objetoContrato { get; set; }
+        public int? numContrato { get; set; }
+        public decimal? valorContrato { get; set; }
+        public string? descricaoContratante { get; set; }
+        public string? descricaoContratado { get; set; }
+        public int? status { get; set; }
+    }
     public class EnvelopeId
     {
         public long id { get; set; }
