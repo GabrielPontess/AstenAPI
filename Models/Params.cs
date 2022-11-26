@@ -14,4 +14,10 @@
         public long idEnvelope { get; set; }
         public string getLobs { get; set; } = "N";
     }
+    public class ParamsPdfDownload
+    {
+        public long idEnvelope { get; set; }
+        public string incluirDocs { get; set; } = "N";
+        public string versaoSemCertificado { get; set; }
+    }
 }

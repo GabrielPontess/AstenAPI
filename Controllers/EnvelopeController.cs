@@ -183,5 +183,44 @@ namespace AstenAssinaturaAPI.Controllers
                 throw;
             }
         }
+
+        [HttpPost]
+        [Route("downloadPDFEnvelopeDocs")]
+        public ActionResult downloadPDFEnvelopeDocs(long envelopeId)
+        {
+            var Connection = "https://plataforma.astenassinatura.com.br/api/downloadPDFEnvelopeDocs";
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var downloadPDFEnvelopeDocs = new downloadPDFEnvelopeDocs()
+                    {
+                        Params = new ParamsPdfDownload()
+                        {
+                            idEnvelope = envelopeId,
+                        }
+                    };
+
+                    var jsonobjeto = JsonConvert.SerializeObject(downloadPDFEnvelopeDocs).Replace("Params", "params");
+
+                    var content = new StringContent(jsonobjeto, Encoding.UTF8, "application/json");
+
+                    var response = client.PostAsync(Connection, content);
+                    response.Wait();
+
+                    if (response.Result.IsSuccessStatusCode)
+                    {
+                        var result = response.Result.Content.ReadAsStringAsync();
+
+                        return Ok(result.Result);
+                    }
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }
