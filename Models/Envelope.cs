@@ -1,8 +1,9 @@
-﻿namespace AstenAssinaturaAPI.Models
+﻿using Newtonsoft.Json;
+
+namespace AstenAssinaturaAPI.Models
 {
     public class Envelope
-    { 
-        public long id { get; set; }
+    {
         public string? descricao { get; set; }
         public Repositorio Repositorio { get; set; } = new Repositorio();
         public string? mensagem { get; set; }
@@ -30,5 +31,10 @@
         public decimal? valorContrato { get; set; }
         public string? descricaoContratante { get; set; }
         public string? descricaoContratado { get; set; }
+    }
+
+    public class EnvelopeId
+    {
+        public long id { get; set; }
     }
 }
