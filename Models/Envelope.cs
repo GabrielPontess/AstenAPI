@@ -1,7 +1,8 @@
 ﻿namespace AstenAssinaturaAPI.Models
 {
     public class Envelope
-    {
+    { 
+        public long id { get; set; }
         public string? descricao { get; set; }
         public Repositorio Repositorio { get; set; } = new Repositorio();
         public string? mensagem { get; set; }
@@ -11,8 +12,8 @@
         public DateTime? horaExpiracao { get; set; }
         public string usarOrdem { get; set; } = "S"; 
         public ConfigAuxiliar ConfigAuxiliar { get; set; } = new ConfigAuxiliar();
-        public List<Documento> listaDocumentos { get; set; } = new List<Documento>();
-        public List<SignatarioEnvelope> listaSignatariosEnvelope { get; set; } = new List<SignatarioEnvelope>(); 
+        public List<DocumentoMock> listaDocumentos { get; set; } = new List<DocumentoMock>();
+        public List<SignatarioMock> listaSignatariosEnvelope { get; set; } = new List<SignatarioMock>(); 
         public List<Observador> listaObservadores { get; set; } = new List<Observador>();
         public List<Tag> listaTags { get; set; } = new List<Tag>();
         public List<InfoAdicional> listaInfoAdicional { get; set; } = new List<InfoAdicional>();
